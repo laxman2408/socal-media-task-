@@ -1,0 +1,13 @@
+/* .navigation{
+    display: flex;
+    background-color: rgb(255, 145, 0);
+    height: 50px;
+    width: 100%;
+} */
+
+@media (max-width: 768px) {
+  .abc {
+    padding-left: 5;
+    display: none;
+  }
+}
