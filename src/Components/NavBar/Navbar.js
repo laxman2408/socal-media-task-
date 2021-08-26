@@ -29,10 +29,11 @@ function Navbar() {
     <div
       className="navigation"
       style={{
+        // height: "60px",
         position: "sticky",
-        height: 60,
+        // height: 60,
         width: "100%",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
       }}
     >
       <div className="leftnav" style={{ position: "sticky", display: "flex" }}>

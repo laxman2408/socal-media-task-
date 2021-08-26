@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import { Card, Input, Image } from "antd";
 import { Avatar } from "antd";
-import { UserOutlined, HeartFilled, MessageFilled } from "@ant-design/icons";
+import {
+  UserOutlined,
+  HeartFilled,
+  MessageFilled,
+  RedditOutlined,
+} from "@ant-design/icons";
 import images from "./dark1.jpg";
 import images2 from "./dark2.jpg";
 import Images3 from "./sh.jpg";
 import propic from "./propic3.jpg";
 import images4 from "./bb.jpg";
 import propic2 from "./propic2.jpg";
+
+import Leftside from "../Leftside/Leftside.js";
+import Rightside from "../Rightside/Rightside";
+
 // import images3 from './ram.jpg'
 // import images4 from './kb.jpg'
 function Content() {
@@ -19,11 +28,17 @@ function Content() {
   };
 
   const [Comment, setComment] = useState("");
-
+  const [Addcomment, setAddcomment] = useState([]);
+  const addHandler = (uName) => {
+    setAddcomment((prevComments) => {
+      return [...prevComments, { Comment: uName }];
+    });
+  };
   const commentHandler = (e, name) => {
     setComment(e.target.value);
   };
   const submitHanlder = (e) => {
+    addHandler(Comment);
     e.preventDefault();
     setCount(count + 1);
     setComment("");
@@ -33,14 +48,16 @@ function Content() {
   const [count, setCount] = useState(0);
   const data = Comments;
   return (
-    <div style={{ backgroundColor: "#EEF2F5" }}>
+    <div style={{ backgroundColor: "#EEF2F5", display: "flex" }}>
+      <Leftside />
+
       <div>
         <h5 style={{ color: "transparent" }}>laxman</h5>
         <Card
           style={{
-            marginLeft: 450,
+            marginLeft: 30,
             alignItems: "center",
-            width: 500,
+            width: 600,
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
           }}
         >
@@ -60,9 +77,10 @@ function Content() {
 
         <Card
           style={{
-            marginLeft: 450,
+            marginLeft: 30,
+
             alignItems: "center",
-            width: 500,
+            width: 600,
             marginTop: 20,
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
           }}
@@ -82,7 +100,7 @@ function Content() {
             {"Tony stark "}
           </span>
           <br></br>
-          <img width={450} src={Images3} />
+          <img width={550} src={Images3} />
           <br></br>
           <HeartFilled
             style={{ color: "red", marginBottom: 10 }}
@@ -122,13 +140,24 @@ function Content() {
               ADD
             </button>
           </span>
+          <div>
+            {Addcomment.map((cmd) => {
+              return (
+                <div>
+                  <RedditOutlined />
+                  {cmd.Comment}
+                </div>
+              );
+            })}
+          </div>
         </Card>
 
         <Card
           style={{
-            marginLeft: 450,
+            marginLeft: 30,
+
             alignItems: "center",
-            width: 500,
+            width: 600,
             marginTop: 20,
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
           }}
@@ -148,7 +177,7 @@ function Content() {
             {"Bryan Cranston "}
           </span>
           <br></br>
-          <img width={450} src={images4} />
+          <img width={550} src={images4} />
           <br></br>
           <HeartFilled
             style={{ color: "red", marginBottom: 10 }}
@@ -188,13 +217,24 @@ function Content() {
               ADD
             </button>
           </span>
+          <div>
+            {Addcomment.map((cmd) => {
+              return (
+                <div>
+                  <RedditOutlined />
+                  {cmd.Comment}
+                </div>
+              );
+            })}
+          </div>
         </Card>
 
         <Card
           style={{
-            marginLeft: 450,
+            marginLeft: 30,
+
             alignItems: "center",
-            width: 500,
+            width: 600,
             marginTop: 20,
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
           }}
@@ -212,7 +252,7 @@ function Content() {
           />
           {"Chrishtopher Nolen"}
           <br></br>
-          <img width={450} src={images2} />
+          <img width={550} src={images2} />
           <br></br>
           <HeartFilled
             style={{ color: "red", marginBottom: 10 }}
@@ -254,6 +294,7 @@ function Content() {
           </span>
         </Card>
       </div>
+      <Rightside />
     </div>
   );
 }
